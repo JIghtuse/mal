@@ -11,8 +11,6 @@ all: $(TARGETS)
 .cxx.o:
 	$(COMPILE.cc) -c $< -o $@
 
-$(info $(TARGETS))
-
 $(TARGETS): %: src/%.o
 	$(LINK.cc) $^ -o $@
 
