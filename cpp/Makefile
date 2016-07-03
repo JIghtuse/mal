@@ -1,6 +1,7 @@
 CXXFLAGS += -O0 -Wall -Werror -Wextra -Weffc++ -pedantic -std=c++14 $(DEBUG)
 STEPS = $(wildcard src/step*.cxx)
 TARGETS = $(STEPS:src/%.cxx=%)
+LDFLAGS = -lreadline
 
 .PHONY: all clean
 

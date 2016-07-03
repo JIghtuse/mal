@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 namespace {
     const char* prompt = "user> ";
@@ -27,13 +29,12 @@ const std::string rep(const std::string& in)
 
 int main()
 {
-    while (true) {
-        if (std::cin.eof()) {
-            break;
-        }
-        std::cout << prompt;
-        std::string s;
-        std::getline(std::cin, s);
+    char *line;
+    while ((line = readline(prompt)) != nullptr) {
+        auto s = std::string{line};
         std::cout << rep(s) << std::endl;
+        if (*line) {
+            add_history(line);
+        }
     }
 }
